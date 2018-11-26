@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "799131758348",
+    "firebase_url": "https://mafish-ab1b4.firebaseio.com",
+    "project_id": "mafish-ab1b4",
+    "storage_bucket": "mafish-ab1b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799131758348:android:ea3079744df52982",
+        "android_client_info": {
+          "package_name": "com.mafish.mafish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799131758348-53agsqjktmetmjb3hmt503m9u7kbfr51.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mafish.mafish",
+            "certificate_hash": "d74e5d386277904630a0d12f5519a9380f284d0e"
+          }
+        },
+        {
+          "client_id": "799131758348-0pimumi63gvpn64u0jb8g8r6pakgbkr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIcLJqmNnrJZtsueKMiXXG0U_285VJfzY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799131758348-0pimumi63gvpn64u0jb8g8r6pakgbkr9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
