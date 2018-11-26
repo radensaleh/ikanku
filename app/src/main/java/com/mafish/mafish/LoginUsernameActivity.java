@@ -40,7 +40,6 @@ public class LoginUsernameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_username);
 
-        btnGoogleSign = findViewById(R.id.btn_google_sign);
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
