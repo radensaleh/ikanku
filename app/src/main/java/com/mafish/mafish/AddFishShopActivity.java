@@ -8,7 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,18 +18,24 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.mafish.mafish.adapter.FishAdapter;
+import com.mafish.mafish.model.Fish;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.List;
 
 public class AddFishShopActivity extends AppCompatActivity {
 
     EditText etFishName, etPrice, etDescription;
-    Button btnSelectImage, btnSubmit;
+    Button btnSelectImage, btnSubmit, btnList;
     ImageView ivFish;
 
-    public static SQLiteHelper sqLiteHelper;
     final static int REQUEST_CODE_GALLERY = 999;
+
+    private DbHandler dbHandler;
+    private FishAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +49,7 @@ public class AddFishShopActivity extends AppCompatActivity {
         btnSelectImage = findViewById(R.id.btn_select_image);
         btnSubmit = findViewById(R.id.btn_submit);
 
-        final SQLiteHelper sqLiteHelper = new SQLiteHelper(this, "FishDB.sqlite", null, 1);
-        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS FISH (Id INTEGER PRIMARY KEY AUTOINCREMENT, fish_name VARCHAR, price VARCHAR, description VARCHAR, image BLOG)");
+        dbHandler = new DbHandler(this);
 
         btnSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,22 +63,7 @@ public class AddFishShopActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
-                    sqLiteHelper.insertData(
-                            etFishName.getText().toString().trim(),
-                            etPrice.getText().toString().trim(),
-                            etDescription.getText().toString().trim(),
-                            imageViewToByte(ivFish)
-                    );
-                    Toast.makeText(getApplicationContext(), "Added successfully!", Toast.LENGTH_SHORT).show();
-                    etFishName.setText("");
-                    etPrice.setText("");
-                    etDescription.setText("");
-                    ivFish.setImageResource(R.mipmap.ic_launcher);
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
+                validasiForm();
             }
         });
     }
@@ -120,5 +110,29 @@ public class AddFishShopActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArray = stream.toByteArray();
         return byteArray;
+    }
+
+    // FUNGSI INI UNTUK MEMVALIDASI FORM JIKA ADA YANG KOSONG ATAU TIDAK
+    // LALU DILANJUT UNTUK MENJALANKAN PERINTAH SELANJUTNYA
+    private void validasiForm(){
+        String fishName = etFishName.getText().toString();
+        String price = etPrice.getText().toString();
+        String description = etDescription.getText().toString();
+        imageViewToByte(ivFish);
+
+        if (fishName.isEmpty()){
+            etFishName.setError("Nama ikan jangan kosong");
+            etFishName.requestFocus();
+        } if (price.isEmpty()){
+            etPrice.setError("Price jangan kosong");
+            etPrice.requestFocus();
+        } else {
+            dbHandler.tambahFish(new Fish(fishName, price, description, imageViewToByte(ivFish)));
+            List<Fish> mahasiswaList = dbHandler.getAllFish();
+            adapter = new FishAdapter(mahasiswaList);
+            adapter.notifyDataSetChanged();
+
+            Toast.makeText(AddFishShopActivity.this, "Berhasil Menambahkan Data", Toast.LENGTH_SHORT).show();
+        }
     }
 }

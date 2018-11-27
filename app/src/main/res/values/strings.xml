@@ -10,4 +10,14 @@
     <string name="navigation_view_item_4">Settings</string>
     <string name="navigation_view_item_5">About</string>
     <string name="submit">Jual Ikan</string>
+    <string name="data_kosong">Data ikan kosong!</string>
+
+    <string-array name="date">
+        <item>28 September 2018</item>
+        <item>29 September 2018</item>
+        <item>30 September 2018</item>
+        <item>1 Desember 2018</item>
+        <item>2 Desember 2018</item>
+    </string-array>
+
 </resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailFishShopActivity"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:id="@+id/bankcardId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="">
+            <ImageView
+                android:id="@+id/iv_report"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/pencemaran"
+                android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/white"
+                    android:text="Pencemaran pinggir laut"/>
+
+            <TextView
+                android:id="@+id/tv_fish_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:text="Pelapor: "
+                android:textSize="25sp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Sandy Priyatna"
+                android:layout_gravity="center"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorPrimary"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lokasi : Jl. Kejawanan"
+                android:padding="5dp"
+                android:textColor="@android:color/darker_gray"
+                android:textStyle="italic"
+                />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pencemaran tidak hanya merusak atau mematikan komponen biotik (hayati) perairan, tetapi dapat pula membahayakan kesehatan atau bahkan mengancam nyawa manusia yang memanfaatkan biota atau perairan yang tercemar. Selain itu pencemaran juga dapat mengurangi keindahan perairan laut dan pesisir yang terkena pencemaran "
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/darker_gray" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

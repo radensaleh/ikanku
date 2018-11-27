@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReportActivity">
+    android:id="@+id/activity_add_fish_shop">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,6 +15,7 @@
             android:id="@+id/iv_fish"
             android:layout_width="match_parent"
             android:layout_height="180dp"
+            android:src="@drawable/image"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"/>
@@ -23,7 +24,10 @@
             android:id="@+id/btn_select_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:padding="15dp"
             android:text="Pilih gambar"
+            android:textColor="@android:color/white"
             android:layout_gravity="center"/>
 
         <EditText
@@ -32,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:inputType="text"
             android:hint="Nama Ikan"/>
 
         <EditText
@@ -40,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:inputType="number"
             android:hint="Harga / Kg"/>
 
         <TextView
@@ -55,7 +61,8 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="20dp"
+            android:inputType="text"/>
 
     </LinearLayout>
 

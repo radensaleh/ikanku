@@ -40,7 +40,7 @@
         <android.support.v7.widget.CardView
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:id="@+id/bankcardId"
+            android:id="@+id/cv_pencemaran"
             android:layout_width="match_parent"
             android:layout_height="260dp"
             android:layout_margin="16dp">
@@ -52,7 +52,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
-                    android:src="@drawable/bawal"
+                    android:src="@drawable/pencemaran"
                     android:scaleType="centerCrop"
                     android:padding="10dp"/>
                 <TextView
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Ikan Bawal"
+                    android:text="Sampah berserakan uung pantai"
                     android:layout_gravity="center"/>
                 <View
                     android:layout_width="match_parent"

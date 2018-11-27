@@ -2,10 +2,16 @@ package com.mafish.mafish;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -24,8 +30,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.mafish.mafish.model.User;
 
-public class LoginUsernameActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private SignInButton btnGoogleSign;
     private static final int RC_SIGN_IN = 1;
@@ -35,21 +42,26 @@ public class LoginUsernameActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "LOGIN_ACTIVITY";
 
+    EditText etNoHp, etPassword;
+    Button btnLogin;
+    SqliteHelper sqliteHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_username);
+        setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser() != null)
-                {
-                    startActivity(new Intent(LoginUsernameActivity.this, MainActivity.class));
+                if (firebaseAuth.getCurrentUser() != null) {
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }
             }
         };
+
+        btnGoogleSign = findViewById(R.id.btn_google);
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -61,7 +73,7 @@ public class LoginUsernameActivity extends AppCompatActivity {
                 .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
                     @Override
                     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                        Toast.makeText(LoginUsernameActivity.this, "Sorry! Login error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Maaf! no handphone atau password salah", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
@@ -73,7 +85,78 @@ public class LoginUsernameActivity extends AppCompatActivity {
                 signIn();
             }
         });
+
+        sqliteHelper = new SqliteHelper(this);
+        initCreateAccountTextView();
+        initViews();
+
+        //set click event of login button
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Check user input is correct or not
+
+                    //Get values from EditText fields
+                    String noHandphone = etNoHp.getText().toString();
+                    String password = etPassword.getText().toString();
+
+                    //Authenticate user
+                    User currentUser = sqliteHelper.Authenticate(new User(null, null, noHandphone, password));
+
+                    //Check Authentication is successful or not
+                    if (currentUser != null) {
+                        Snackbar.make(btnLogin, "Berhasil login!", Snackbar.LENGTH_LONG).show();
+                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                        i.putExtra("KEY_NO_HP", noHandphone);
+                        startActivity(i);
+                        //User Logged in Successfully Launch You home screen activity
+                       /* Intent intent=new Intent(LoginActivity.this,HomeScreenActivity.class);
+                        startActivity(intent);
+                        finish();*/
+                    } else {
+
+                        //User Logged in Failed
+                        Snackbar.make(btnLogin, "Gagal untuk login! coba kembali", Snackbar.LENGTH_LONG).show();
+
+                    }
+                }
+        });
     }
+
+    private void initCreateAccountTextView() {
+        TextView textViewCreateAccount = (TextView) findViewById(R.id.tv_regist);
+        textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    //this method is used to connect XML views to its Objects
+    private void initViews() {
+        etNoHp = (EditText) findViewById(R.id.et_nohp);
+        etPassword = (EditText) findViewById(R.id.et_nohp);
+        btnLogin = (Button) findViewById(R.id.btn_login);
+
+    }
+
+    //This method is for handling fromHtml method deprecation
+    @SuppressWarnings("deprecation")
+    public static Spanned fromHtml(String html) {
+        Spanned result;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            result = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            result = Html.fromHtml(html);
+        }
+        return result;
+    }
+
+    //This method is used to validate input given by user
+
 
     @Override
     protected void onStart() {

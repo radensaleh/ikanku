@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mafish.mafish">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,9 +20,14 @@
         </activity>
         <activity android:name=".ReportActivity" />
         <activity android:name=".AddReportActivity" />
-        <activity android:name=".LoginUsernameActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".FishShopActivity" />
-        <activity android:name=".AddFishShopActivity"></activity>
+        <activity android:name=".AddFishShopActivity" />
+        <activity android:name=".DetailFishShopActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".DetailReportActivity" />
+        <activity android:name=".InfoPriceFishActivity"></activity>
+        <activity android:name=".DetailTunaFishShopActivity"></activity>
     </application>
 
 </manifest>
