@@ -8,6 +8,8 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.mafish.mafish.Database.DbHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     CardView cvJualBeliIkan, cvInfoHargaIkan, cvSuratJalan, cvLaporkan;

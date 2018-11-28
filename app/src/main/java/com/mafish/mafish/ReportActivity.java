@@ -26,7 +26,7 @@ public class ReportActivity extends AppCompatActivity {
         cvReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ReportActivity.this, MainActivity.class);
+                Intent i = new Intent(ReportActivity.this, DetailReportActivity.class);
                 startActivity(i);
             }
         });

@@ -1,4 +1,4 @@
-package com.mafish.mafish;
+package com.mafish.mafish.Database;
 
 import android.content.Context;
 import android.database.Cursor;

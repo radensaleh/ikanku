@@ -1,8 +1,6 @@
 package com.mafish.mafish;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,9 +13,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import com.mafish.mafish.Database.DbHandler;
 import com.mafish.mafish.adapter.FishAdapter;
 import com.mafish.mafish.model.Fish;
 

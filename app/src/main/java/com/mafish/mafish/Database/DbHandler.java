@@ -1,4 +1,4 @@
-package com.mafish.mafish;
+package com.mafish.mafish.Database;
 
 import android.content.ContentValues;
 import android.content.Context;

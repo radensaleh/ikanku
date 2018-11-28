@@ -30,6 +30,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.mafish.mafish.helper.SqliteHelper;
 import com.mafish.mafish.model.User;
 
 public class LoginActivity extends AppCompatActivity {
@@ -96,20 +97,22 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //Check user input is correct or not
+                if (validate()) {
 
                     //Get values from EditText fields
-                    String noHandphone = etNoHp.getText().toString();
-                    String password = etPassword.getText().toString();
+                    String Email = etNoHp.getText().toString();
+                    String Password = etPassword.getText().toString();
 
                     //Authenticate user
-                    User currentUser = sqliteHelper.Authenticate(new User(null, null, noHandphone, password));
+                    User currentUser = sqliteHelper.Authenticate(new User(null, null, Email, Password));
 
                     //Check Authentication is successful or not
                     if (currentUser != null) {
                         Snackbar.make(btnLogin, "Berhasil login!", Snackbar.LENGTH_LONG).show();
                         Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                        i.putExtra("KEY_NO_HP", noHandphone);
+                        i.putExtra("KEY_NO_HP", Email);
                         startActivity(i);
+
                         //User Logged in Successfully Launch You home screen activity
                        /* Intent intent=new Intent(LoginActivity.this,HomeScreenActivity.class);
                         startActivity(intent);
@@ -117,10 +120,11 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
 
                         //User Logged in Failed
-                        Snackbar.make(btnLogin, "Gagal untuk login! coba kembali", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(btnLogin, "Maaf! login gagal", Snackbar.LENGTH_LONG).show();
 
                     }
                 }
+            }
         });
     }
 
@@ -138,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
     //this method is used to connect XML views to its Objects
     private void initViews() {
         etNoHp = (EditText) findViewById(R.id.et_nohp);
-        etPassword = (EditText) findViewById(R.id.et_nohp);
+        etPassword = (EditText) findViewById(R.id.et_password);
         btnLogin = (Button) findViewById(R.id.btn_login);
 
     }
@@ -155,8 +159,39 @@ public class LoginActivity extends AppCompatActivity {
         return result;
     }
 
-    //This method is used to validate input given by user
+    public boolean validate() {
+        boolean valid = false;
 
+        //Get values from EditText fields
+        String Email = etNoHp.getText().toString();
+        String Password = etPassword.getText().toString();
+
+        //Handling validation for Email field
+        if (Email.isEmpty()) {
+            valid = false;
+            etNoHp.setError("Nomor HP atau password salah!");
+        } else {
+            valid = true;
+            etNoHp.setError(null);
+        }
+
+        //Handling validation for Password field
+        if (Password.isEmpty()) {
+            valid = false;
+            etNoHp.setError("Nomor HP atau password salah!");
+        } else {
+            if (Password.length() > 5) {
+                valid = true;
+                etPassword.setError(null);
+            } else {
+                valid = false;
+                etPassword.setError("Password lebih dari 5 karakter!");
+            }
+        }
+
+        return valid;
+    }
+    //This method is used to validate input given by user
 
     @Override
     protected void onStart() {

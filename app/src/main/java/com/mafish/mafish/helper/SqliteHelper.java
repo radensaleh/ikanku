@@ -1,4 +1,4 @@
-package com.mafish.mafish;
+package com.mafish.mafish.helper;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,7 +11,7 @@ import com.mafish.mafish.model.User;
 public class SqliteHelper extends SQLiteOpenHelper {
 
     //DATABASE NAME
-    public static final String DATABASE_NAME = "loopwiki.com";
+    public static final String DATABASE_NAME = "user.db";
 
     //DATABASE VERSION
     public static final int DATABASE_VERSION = 1;
@@ -51,6 +51,24 @@ public class SqliteHelper extends SQLiteOpenHelper {
         //Create Table when oncreate gets called
         sqLiteDatabase.execSQL(SQL_TABLE_USERS);
 
+    }
+
+
+    public boolean isEmailExists(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_USERS,// Selecting Table
+                new String[]{KEY_ID, KEY_USER_NAME, KEY_NO_HP, KEY_PASSWORD},//Selecting columns want to query
+                KEY_NO_HP + "=?",
+                new String[]{email},//Where clause
+                null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()&& cursor.getCount()>0) {
+            //if cursor has value then in user database there is user associated with this given email so return true
+            return true;
+        }
+
+        //if email does not exist return false
+        return false;
     }
 
     @Override
