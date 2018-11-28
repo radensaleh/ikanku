@@ -11,4 +11,7 @@
     <color name="accent_A100">#FF8A80</color>
     <color name="accent_A200">#FF5252</color>
     <color name="accent_A400">#FF1744</color>
+
+    <color name="colorTransparantWhite">#c9c9c9c9</color>
+
 </resources>
