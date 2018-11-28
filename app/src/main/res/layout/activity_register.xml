@@ -38,8 +38,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:layout_margin="15dp"
-            android:hint="Email"
-            android:inputType="textEmailAddress"/>
+            android:hint="No Handphone"
+            android:inputType="number"/>
 
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout

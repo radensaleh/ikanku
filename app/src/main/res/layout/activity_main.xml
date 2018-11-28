@@ -89,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Check your bank activities"
+                    android:text="Informasi tentang surat jalan"
                     android:textSize="10dp"
                     android:textColor="@android:color/darker_gray"/>
 
@@ -128,8 +128,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="10dp"
-                    android:text="Check your bank activities"
-                    android:padding="5dp"
+                    android:text="Informasi tentang harga ikan"
                     android:textColor="@android:color/darker_gray"/>
 
             </LinearLayout>
@@ -176,7 +175,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="10dp"
-                    android:text="Check your bank activities"
+                    android:text="Lakukan transaksi jual beli disini"
                     android:padding="5dp"
                     android:textColor="@android:color/darker_gray"/>
 
@@ -220,8 +219,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="5dp"
-                    android:text="Pelaporan"
+                    android:text="Laporkan masalah perikanan disini"
                     android:textSize="10dp"
                     android:textColor="@android:color/darker_gray" />
 
@@ -235,6 +233,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.CardView
+            android:id="@+id/cv_monitoring"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_width="320dp"
@@ -249,7 +248,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="34dp"
                     android:layout_height="34dp"
-                    android:background="@drawable/shop"
+                    android:background="@drawable/map"
                     android:padding="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -267,7 +266,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Monitoring"
+                    android:text="Melakukan monitoring pada nelayan"
                     android:padding="5dp"
                     android:textColor="@android:color/darker_gray"/>
 

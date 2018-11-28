@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Sampah berserakan uung pantai"
+                    android:text="PENCEMARAN PINGGIR LAUT"
                     android:layout_gravity="center"/>
                 <View
                     android:layout_width="match_parent"
@@ -89,6 +89,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
+            android:background="@drawable/add"
+            android:src="@drawable/add"
+            android:backgroundTint="@color/colorPrimary"
             android:layout_margin="10dp"/>
 
     </FrameLayout>

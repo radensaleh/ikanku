@@ -3,6 +3,7 @@ package com.mafish.mafish;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -48,6 +49,11 @@ public class FishShopActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, sort);
         // mengeset Array Adapter tersebut ke Spinner
         spinner.setAdapter(adapter);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Jual Beli Ikan");
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         initComponents();
         initRecyclerView();
@@ -143,6 +149,11 @@ public class FishShopActivity extends AppCompatActivity {
                     })
             );
         }
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
 

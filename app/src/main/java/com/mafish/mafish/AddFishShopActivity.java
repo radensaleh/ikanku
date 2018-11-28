@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -48,6 +49,11 @@ public class AddFishShopActivity extends AppCompatActivity {
         ivFish = findViewById(R.id.iv_fish);
         btnSelectImage = findViewById(R.id.btn_select_image);
         btnSubmit = findViewById(R.id.btn_submit);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Jual Ikan");
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         dbHandler = new DbHandler(this);
 
@@ -134,5 +140,11 @@ public class AddFishShopActivity extends AppCompatActivity {
 
             Toast.makeText(AddFishShopActivity.this, "Berhasil Menambahkan Data", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

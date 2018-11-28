@@ -12,7 +12,7 @@ import com.mafish.mafish.Database.DbHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    CardView cvJualBeliIkan, cvInfoHargaIkan, cvSuratJalan, cvLaporkan;
+    CardView cvJualBeliIkan, cvInfoHargaIkan, cvSuratJalan, cvLaporkan, cvMonitoring;
     public static DbHelper sqLiteHelper;
     TextView tvNoHp;
 
@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         cvInfoHargaIkan = findViewById(R.id.cv_info_harga_ikan);
         cvSuratJalan = findViewById(R.id.cv_surat_jalan);
         cvLaporkan = findViewById(R.id.cv_laporkan);
+        cvMonitoring = findViewById(R.id.cv_monitoring);
+
         tvNoHp = findViewById(R.id.tv_nohp);
 
         cvJualBeliIkan.setOnClickListener(new View.OnClickListener() {
@@ -46,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         cvSuratJalan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(cvSuratJalan, "Fitur mendatang :)", Snackbar.LENGTH_LONG).show();
-
+                Intent i = new Intent(MainActivity.this, InfoSipiActivity.class);
+                startActivity(i);
             }
         });
 
@@ -56,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, ReportActivity.class);
                 startActivity(i);
+            }
+        });
+
+        cvMonitoring.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent i = new Intent(MainActivity.this, MonitoringActivity.class);
+//                startActivity(i);
+                Snackbar.make(cvMonitoring, "Fitur ini masih dalam proses:)", Snackbar.LENGTH_LONG).show();
+
             }
         });
 

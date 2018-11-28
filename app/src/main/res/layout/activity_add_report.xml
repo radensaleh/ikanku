@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReportActivity">
+    android:id="@+id/activity_add_fish_shop">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,9 +12,10 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/iv_report"
+            android:id="@+id/iv_fish"
             android:layout_width="match_parent"
             android:layout_height="180dp"
+            android:src="@drawable/image"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"/>
@@ -23,23 +24,54 @@
             android:id="@+id/btn_select_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select image here"
+            android:background="@android:color/darker_gray"
+            android:padding="15dp"
+            android:text="Pilih gambar"
+            android:textColor="@android:color/white"
             android:layout_gravity="center"/>
+
+        <EditText
+            android:id="@+id/et_fish_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:inputType="text"
+            android:hint="Nama Pelapor"/>
+
+        <EditText
+            android:id="@+id/et_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:inputType="text"
+            android:hint="Judul"/>
+
+        <EditText
+            android:id="@+id/et_price2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:inputType="text"
+            android:hint="Alamat"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Deskripsi: "
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="Alasan pelaporan :"/>
+            android:layout_marginBottom="5dp"/>
 
         <EditText
+            android:id="@+id/et_description"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:inputType="text"/>
 
     </LinearLayout>
 
@@ -47,7 +79,7 @@
         android:id="@+id/btn_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/submit"
+        android:text="Tambah Laporan"
         android:background="@color/colorPrimary"
         android:textColor="@android:color/white"
         android:layout_alignParentBottom="true"/>

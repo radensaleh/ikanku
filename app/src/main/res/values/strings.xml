@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mafish</string>
+    <string name="app_name">Ikanku</string>
 
     <string name="openDrawer">Drawer dibuka</string>
     <string name="closeDrawer">Drawer ditutup</string>
@@ -11,6 +11,7 @@
     <string name="navigation_view_item_5">About</string>
     <string name="submit">Jual Ikan</string>
     <string name="data_kosong">Data ikan kosong!</string>
+    <string name="google_maps_key">AIzaSyAbaKzT1tabRP0FHrh8Bz5CA-08KAwCqhw</string>
 
     <string-array name="date">
         <item>28 September 2018</item>
@@ -19,5 +20,18 @@
         <item>1 Desember 2018</item>
         <item>2 Desember 2018</item>
     </string-array>
+
+    <string name="hello">
+<![CDATA[
+<html>
+ <head></head>
+ <body style="text-align:justify;color:gray;background-color:black;">
+  Lorem ipsum dolor sit amet, consectetur
+  adipiscing elit. Nunc pellentesque, urna
+  nec hendrerit pellentesque, risus massa
+ </body>
+</html>
+]]>
+</string>
 
 </resources>

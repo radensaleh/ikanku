@@ -1,6 +1,7 @@
 package com.mafish.mafish;
 
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,11 @@ public class InfoPriceFishActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_price_fish);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Info Harga Ikan");
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         spinner = findViewById(R.id.spinner_date);
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
